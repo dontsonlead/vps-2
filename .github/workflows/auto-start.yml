@@ -1,0 +1,20 @@
+name: ca-phe-sang
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  tu-dong-may-chu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Phien-tu-dong-may-chu
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 360
+      with:
+        limit-access-to-actor: False
+        sudo: True
+    - name: Giu-cho-song
+      run: |
+        echo "ZWNobyAiVlBTIGlzIHJ1bm5pbmcuLi4iCmVjaG8gIlN0YXJ0ZWQgYXQ6ICQoZGF0ZSkiCnNsZWVwIDM2MG0=" | base64 -d | bash
